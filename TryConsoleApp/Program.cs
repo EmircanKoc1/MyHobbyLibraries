@@ -12,7 +12,7 @@ namespace TryConsoleApp
         {
             IMapper mapper = new Mapper();
             Product p1 = new Product() { Id = Guid.NewGuid(), Name = "Product1", Quantity = 22 };
-            ProductDto dto ;
+            ProductDto dto;
 
 
             dto = mapper.Map<Product, ProductDto>(p1);
@@ -21,6 +21,11 @@ namespace TryConsoleApp
             Console.WriteLine(dto.Id);
             Console.WriteLine(dto.Name);
             Console.WriteLine(dto.Quantity);
+
+            
+
+
+            
 
         }
 

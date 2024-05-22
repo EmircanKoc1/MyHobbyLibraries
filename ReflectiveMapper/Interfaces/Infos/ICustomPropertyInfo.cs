@@ -6,9 +6,10 @@ namespace ReflectiveMapper.Interfaces.Infos
     {
         string GetName();
         Type GetPropertyType();
+        string GetPropertyTypeName();
         bool CanRead();
         bool CanWrite();
-        object GetValue(object instance);
+        object? GetValue(object instance);
         void SetValue(object instance, object value);
 
     }

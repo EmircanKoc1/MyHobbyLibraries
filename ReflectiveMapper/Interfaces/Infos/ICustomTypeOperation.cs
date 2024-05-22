@@ -8,7 +8,6 @@ namespace ReflectiveMapper.Interfaces.Infos
         string GetNameType<TModel>();
         IEnumerable<ICustomPropertyInfo> GetProperties<TModel>();
         IEnumerable<ICustomMethodInfo> GetMethods<TModel>();
-        Type GetType<TModel>();
 
     }
 }

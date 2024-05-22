@@ -10,7 +10,7 @@ namespace ReflectiveMapper.Implementations.Operations
     public class CustomTypeOperation : ICustomTypeOperation
     {
 
-
+        public static CustomTypeOperation CreateTypeOperation() => new CustomTypeOperation();
         public IEnumerable<ICustomPropertyInfo> GetProperties<TModel>()
         {
             var propertyInfos = GetType<TModel>().GetProperties();
@@ -29,7 +29,7 @@ namespace ReflectiveMapper.Implementations.Operations
 
         }
 
-        public Type GetType<TModel>()
+        private Type GetType<TModel>()
             => typeof(TModel);
 
         public string GetNameType<TModel>()

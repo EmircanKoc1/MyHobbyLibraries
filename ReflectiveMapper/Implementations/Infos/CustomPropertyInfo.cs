@@ -1,6 +1,6 @@
-﻿using System;
+﻿using ReflectiveMapper.Interfaces.Infos;
+using System;
 using System.Reflection;
-using ReflectiveMapper.Interfaces.Infos;
 
 namespace ReflectiveMapper.Implementations.Infos
 {
@@ -25,12 +25,15 @@ namespace ReflectiveMapper.Implementations.Infos
             => PropertyInfo.Name;
 
         public Type GetPropertyType()
-            => PropertyInfo.GetType();
+            => PropertyInfo.PropertyType;
 
-        public object GetValue(object instance)
+        public object? GetValue(object instance)
             => PropertyInfo.GetValue(instance);
 
         public void SetValue(object instance, object value)
             => PropertyInfo.SetValue(instance, value);
+
+        public string GetPropertyTypeName()
+        => GetPropertyType().Name;
     }
 }

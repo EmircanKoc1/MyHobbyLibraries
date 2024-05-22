@@ -11,7 +11,7 @@ namespace ReflectiveMapper.Implementations.Services
     {
         private readonly ICustomTypeOperation _typeOperation;
         private ICustomTypeOperation ICustomTypeOperation => _typeOperation;
-        public Mapper() => _typeOperation = new CustomTypeOperation();
+        public Mapper() => _typeOperation = CustomTypeOperation.CreateTypeOperation();
 
         public TDestination Map<TSource, TDestination>(TSource source)
         where TDestination : new()
@@ -27,10 +27,14 @@ namespace ReflectiveMapper.Implementations.Services
                 destinationPropertyInfos.CustomForeach(destinationPropertyInfo =>
                 {
 
-                    if (!sourcePropertyInfo.GetName().Equals(destinationPropertyInfo.GetName()))
-                        return;
+                    if (sourcePropertyInfo.GetName().Equals(destinationPropertyInfo.GetName()))
+                    {
+                        if (sourcePropertyInfo.GetPropertyType().Equals(destinationPropertyInfo.GetPropertyType()))
+                        {
+                            destinationPropertyInfo.SetValue(instance, sourcePropertyInfo.GetValue(source));
+                        }
+                    }
 
-                    destinationPropertyInfo.SetValue(instance, sourcePropertyInfo.GetValue(source));
 
                 });
 
